@@ -7,7 +7,6 @@
 var deferred = require('deferred');
 var config = require("../config")().TWILIO;
 var twilio = require('twilio');
-// var U = require('./util');
 var unidecode = require('unidecode');
 
 if (!config) {
@@ -26,13 +25,13 @@ var TWILIO = {
 
 		var client = new twilio.RestClient(config.ACC_SID, config.TOKEN);
 		try {
-			params.mobile = U.extractPhone(params.mobile);
+			params.mobile = params.mobile;
 			if (params.mobile.lenght <= 10)
 				params.mobile = "+1" + params.mobile;
 		} catch (e) {}
 		client.messages.create({
 			to: params.mobile,
-			callerid: 'Sig. EquipoVision,LLC',
+			callerid: 'REMOTE APP',
 			from: config.NUMBER,
 			body: unidecode(params.msg) || 'Testing Twilio and node.js'
 		}, function (error, message) {

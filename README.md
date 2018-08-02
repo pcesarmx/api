@@ -4,11 +4,12 @@
 
 ## Preview
 
-[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio/master/assets/imgs/preview1.png)](https://github.com/pcesarmx/portfolio-api/)
-[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio/master/assets/imgs/preview1.png)](https://github.com/pcesarmx/portfolio-api/)
 
+[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview1.png)](#)
+[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)](#)
 
-**[View Live Preview using "Contact Page" ](http://pruvalcaba.com/)**
+<!-- <a href="http://api.pruvalcaba.com/" target="_blank">View Live Preview using "Contact Page"</a> -->
+**[View Live Preview using "Contact Page" ](http://api.pruvalcaba.com/){:target="_blank"}**
 
 ## Status
 
@@ -17,9 +18,10 @@
 ## Download and Installation
 
 To begin using this module, choose one of the following options to get started:
-* [Download the latest release on](https://github.com/pcesarmx/portfolio-api/)
-<!-- * Install via npm: `npm i startbootstrap-agency` -->
-* Clone the repo: `git clone https://github.com/pcesarmx/portfolio-api.git`
+
+* Download the latest release Or clone the repo: `git clone https://github.com/pcesarmx/portfolio-api.git`
+
+* Install grunt (if you don't have it installed) `npm i -g grunt` 
 
 ## Usage
 npm i
@@ -41,6 +43,29 @@ Open your web browser: localhost:5800
 ### Advanced Usage
 
 After downloading, simply edit or cretae a json file `/v1/{your_endpoint}/_test.json` to perform your test.
+
+### Deploy to production
+
+AWS Elasticbeanstalk Deploy:
+
+* `eb init`
+
+* `eb create [ENV_NAME]`
+
+* `eb setenv DEV_ENV=production` or all at once `eb setenv DEV_ENV=production TWILIO_NUMBER=+1112223333 ... [all your config features]` See `_private_config.json` and `config.js`
+
+* `eb use [ENV_NAME]`
+
+* Remember to commit your changed before `eb deploy`
+
+* `eb deploy` or `eb deploy [ENV_NAME]`
+
+
+AWS Lambda - GATEWAY Deploy:
+
+* Coming Soon ...
+
+***[More info about EB CLI ](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html){:target="_blank"}***
 
 #### Grunt Tasks
 

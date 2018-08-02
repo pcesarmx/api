@@ -19,8 +19,8 @@ module.exports = function (main) {
 		staticpath: 'public/'
 	};
 	// DEVELOPMENT SETTINGS
-	ENV.TWILIO = SETTINGS.TWILIO;
-	ENV.GMAIL = SETTINGS.GMAIL;
+	ENV.TWILIO = SETTINGS.TWILIO || {};
+	ENV.GMAIL = SETTINGS.GMAIL || {};
 
 	if (ENV.environment === 'test' || ENV.environment === 'devel') {
 

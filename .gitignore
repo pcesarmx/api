@@ -27,3 +27,4 @@ private_config.json
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 AWS/apigateway/swagger.json
+config_aws.sh
