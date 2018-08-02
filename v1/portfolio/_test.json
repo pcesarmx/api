@@ -1,0 +1,23 @@
+{
+	"tests": [{
+		"event": {
+			"mode": "keepalive",
+			"operation": "portfolio/portfolio",
+			"action": "testapi",
+			"name": "Albert Roberts",
+			"phone": "5591112233",
+			"email": "test@qq.com",
+			"message": "Testing SMS and email"
+		}
+	}, {
+		"event": {
+			"mode": "keepalive",
+			"operation": "portfolio/portfolio",
+			"action": "testapi",
+			"name": "Albert Roberts",
+			"phone": "5591112233",
+			"email": "test@qq.com",
+			"message": "Testing SMS and email"
+		}
+	}]
+}

@@ -1,0 +1,12 @@
+{
+	"TWILIO": {
+		"NUMBER": "+15591112222",
+		"ACC_SID": "YOUR_TWILIO_ACC_SID",
+		"TOKEN": "YOUR_TWILIO_TOKEN"
+	},
+	"GMAIL": {
+		"USER": "youremail@gmail.com",
+		"PASS": "YOUR_PASSWORD",
+		"CC": "optioanl emails separates by `,`"
+	}
+}

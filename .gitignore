@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+
+# Grunt
+.grunt
+.backups
+package-lock.json
+
+# Compiled
+# build/Release
+
+# Dependency directory
+node_modules
+
+# Users Environment Variables
+.lock-wscript
+.env
+event.json
+.DS_Store
+.rebooted
+private_config.json
+
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+AWS/apigateway/swagger.json

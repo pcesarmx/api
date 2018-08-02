@@ -1,0 +1,443 @@
+<!-- TODO Remove # on links dropdown because resets the link and won't reload the same mock -->
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lamda Test Module</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+		<!-- Ionicons -->
+		<!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+		<!-- Theme style -->
+		<link rel="stylesheet" href="css/AdminLTE.min.css">
+		<link rel="stylesheet" href="css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="//localhost:12345/livereload.js"></script>
+		<script src="js/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="js/plugins/jQueryUI/jquery-ui.min.js"></script>
+		<script src="js/plugins/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+
+		<!--
+		<script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+		<script src="js/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+		<script src="js/plugins/fastclick/fastclick.min.js"></script>
+		-->
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+				<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+				<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body class="hold-transition skin-yellow sidebar-mini sidebar-collapse">
+	<div class="wrapper">
+		<form action="javascript:callMock()">
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="/" class="hidden-xs logo">
+					<!-- mini logo for sidebar mini 50x50 pixels -->
+					<span class="logo-mini"><b>LT</b></span>
+					<!-- logo for regular state and mobile devices -->
+					<span class="logo-lg"><b>Lambda</b> Tester</span>
+				</a>
+				<!-- Header Navbar: style can be found in header.less -->
+				<nav class="navbar navbar-static-top" role="navigation">
+					<input class="mock-test-input" type="text" id="mock" placeholder="/portfolio/.test" value=""> &nbsp;<button class="btn btn-sm btn-danger">TEST</button>
+					<!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#gridSystemModal"> See Shorcuts </button> -->
+					<!-- Sidebar toggle button-->
+					<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+						<span class="sr-only">Toggle navigation</span>
+					</a>
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- User Account: style can be found in dropdown.less -->
+							<li class="">
+
+							</li>
+							<!-- Control Sidebar Toggle Button -->
+							<li>
+								<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+		</form>
+	</div>
+	<aside class="main-sidebar">
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+			<!-- search form -->
+			  <!-- <form action="#" method="get" class="sidebar-form">
+				<div class="input-group">
+				  <input type="text" name="q" class="form-control" placeholder="Search API...">
+				  <span class="input-group-btn">
+					<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+				  </span>
+				</div>
+			  </form> -->
+			<!-- /.search form -->
+			<!-- sidebar menu: : style can be found in sidebar.less -->
+			<ul class="sidebar-menu">
+				<li class="header">API Test Module</li>
+				<li class="active">
+					<a href="#"><i class="fa fa-terminal"></i> <span>Lambda Tester</span></a>
+				</li>
+				<li>
+					<a href="/gateway"><i class="fa fa-exchange"></i> <span>Gateway Tester</span></a>
+				</li>
+				<li class="header">Coding</li>
+				<li class="treeview">
+					<a href="#codegen">
+						<i class="fa fa-magic"></i> <span>Generators</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#genmodels"><i class="fa fa-cubes"></i> Models<small class="label pull-right bg-orange">soon</small></a></li>
+						<li><a href="#genlambdatest"><i class="fa fa-circle-o"></i> Lambda Test <small class="label pull-right bg-orange">soon</small></a></li>
+						<li><a href="#gendoc"><i class="fa fa-book"></i> <span>Documentation</span><small class="label pull-right bg-orange">soon</small></a></li>
+					</ul>
+				</li>
+				<li class="header">Documentation</li>
+				<li class="treeview">
+					<a href="#doc">
+						<i class="fa fa-book"></i> <span>API</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#docmodels"><i class="fa fa-circle-o"></i> Models<small class="label pull-right bg-orange">soon</small></a></li>
+						<li><a href="#doclambdatest"><i class="fa fa-circle-o"></i> Lambda <small class="label pull-right bg-orange">soon</small></a></li>
+						<li><a href="#docgateway"><i class="fa fa-circle-o"></i> <span>Gateway</span><small class="label pull-right bg-orange">soon</small></a></li>
+						<li><a href="#doccmd"><i class="fa fa-circle-o"></i> <span>Command Line</span><small class="label pull-right bg-orange">soon</small></a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+		<!-- /.sidebar -->
+	</aside>
+	<div class="content-wrapper">
+		<!-- <section class="content-header">
+			<h1>Request: <small>Please input parameters in JSON format</small></h1>
+			<ol class="breadcrumb">
+				<li><a href="#help"><i class="fa fa-2x text-success fa-question-circle"></i></a></li>
+			</ol>
+		</section> -->
+		<section class="content">
+			<div class="row content-header">
+				<fieldset id="importFileForm" style="display:none;">
+					<input type='button' class="btn btn-danger pull-right" id='btnImportCancel' value='Cancel'>
+					<input type='button' class="btn btn-primary pull-right separate-button" id='btnImport' value='Import'>
+					<label for="fileinput">Select Importing Settings</label>
+					<input type='file' id='fileinput'>
+				</fieldset>
+				<h1>
+					<a href="#" class="anulate"><i data-to="editorRequest" class="toggle fa text-green fa-minus-square-o"></i></a> Request: <small>"Input in JSON format"</small>
+					<div class="btn-group pull-right">
+					  <button id="saveReqParams" type="button" class="btn btn-primary btn-sm">Save</button>
+					  <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span>
+						<span class="sr-only">Toggle Dropdown</span>
+					  </button>
+					  <ul class="dropdown-menu" role="menu">
+						<li><a id="exportReqParams" href="javascript:">Export</a></li>
+						<li><a id="importReqParams" href="javascript:">Import</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:" data-toggle="modal" data-target="#gridSystemModal">Show Shortcuts</a></li>
+						<li><a href="javascript:">Something else here</a></li>
+						<li class="divider"></li>
+					  </ul>
+					</div>
+					<!-- <button id="saveReqParams" class="btn btn-sm btn-primary pull-right"><i class="fa fa-save"></i> Save</button> -->
+				</h1>
+			</div>
+			<div class="row" >
+				<div id="editorRequest" class="editor-request">{"info":"Rquest params Here!"}</div>
+			</div>
+			<div class="row content-header">
+				<h1><a href="#" class="anulate"><i data-to="editorResponse" class="toggle fa text-green fa-minus-square-o"></i></a> Response: <small>"Read Only"</small></h1>
+			</div>
+			<div class="row">
+				<div id="editorResponse" class="editor-response"></div>
+			</div>
+		</section>
+	</div>
+
+	<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content modal-shadow">
+		  <div class="modal-header">
+			<button type="button" class="close white	" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="gridSystemModalLabel">Shorcuts</h4>
+		  </div>
+		  <div class="modal-body">
+			<div class="row">
+			  <div class="col-md-8">Save Request</div>
+			  <div class="col-md-2 col-md-offset-2">Cmd + S, Ctrl + S</div>
+			</div>
+			<div class="row">
+			  <div class="col-md-8">Run TEST command (Request) </div>
+			  <div class="col-md-2 col-md-offset-2">Cmd + E, Ctrl + E</div>
+			</div>
+			<div class="row">
+			  <div class="col-md-8">Shows / Hide Shorcut Table </div>
+			  <div class="col-md-2 col-md-offset-2">Cmd + I, Ctrl + I</div>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+			<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>$.widget.bridge('uibutton', $.ui.button);</script>
+	<!-- AdminLTE App -->
+	<script src="js/notify.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/adminLTE.js"></script>
+	<script>
+		// window.addEventListener("hashchange", function() {
+		// 	document.location.reload();
+		// }, false);
+		$.editorRequest = ace.edit("editorRequest");
+		$.editorResponse = ace.edit("editorResponse");
+
+		// $.editorRequest.getSession().setMode("ace/mode/json");
+		// $.editorResponse.getSession().setMode("ace/mode/json");
+		$.editorRequest.getSession().setMode("ace/mode/javascript");
+		$.editorResponse.getSession().setMode("ace/mode/javascript");
+		$.editorRequest.session.setOption("useWorker", true);
+		$.editorResponse.session.setOption("useWorker", false);
+
+		// $.editorRequest.setTheme("ace/theme/twilight");
+		$.editorRequest.setTheme("ace/theme/eclipse");
+		$.editorResponse.setTheme("ace/theme/eclipse");
+
+		$.editorRequest.moveCursorToPosition(getCursor());
+		$.editorRequest.setShowPrintMargin(false);
+		$.editorResponse.setShowPrintMargin(false);
+		$.editorResponse.setReadOnly(true);
+
+		$('.anulate').click(function() { return false; });
+
+		$(".toggle").on("click",function(e) {
+			localStorage.setItem($(e.toElement).attr('data-to') + ':visible',!$( "#" + $(e.toElement).attr('data-to')).is(':visible'));
+			if ($( "#" + $(e.toElement).attr('data-to')).is(':visible'))
+				$(e.toElement).removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+			else
+				$(e.toElement).removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+			$( "#" + $(e.toElement).attr('data-to') ).toggle( "slow" );
+		});
+
+		$("#saveReqParams").on("click",saveRequest);
+		$("#exportReqParams").on("click",exportSettings);
+		$("#importReqParams").on("click",openfile);
+		$("#btnImportCancel").on("click",hidefile);
+		$("#btnImport").on("click",importsettings);
+
+		$('#mock').on('keyup',function(e) {
+			loadDefaults($('#mock').val());
+		});
+
+		function openfile() {
+			$('#importFileForm').show("slow");
+			// var input = $(document.createElement('input'));
+			// input.attr("type", "file");
+			// input.trigger('click'); // opening dialog
+			// return true; // avoiding navigation
+		}
+
+		function hidefile() {
+			$('#importFileForm').hide("slow");
+		}
+		function importsettings() {
+			if (!$('#fileinput').val() || $('#fileinput').val().trim().length <= 0 ) {
+				alert("Select File First");
+				return;
+			}
+
+
+			var input = $('#fileinput')[0];
+			var reader = new FileReader();
+			reader.onload = function(){
+				var text = reader.result;
+				console.log(reader.result);
+			};
+			reader.readAsText(input.files[0]);
+		}
+
+		function exportSettings(){
+			var obj = {};
+			for (var i=0; i<localStorage.length; i++) {
+				var key = localStorage.key(i);
+				if (/^editorRequest:/.test(key)) {
+					var item = localStorage.getItem(key);
+					obj[key] = item;
+					// do something with item
+				}
+			}
+
+			var link = document.createElement('a');
+			mimeType = 'application/json';
+			// var rightNow = new Date();
+			// var filename = rightNow.toISOString().slice(0,16).replace(/-/g,":");
+			var filename = new Date().toISOString();
+			link.setAttribute('download', "endpoints_"+ filename +".json");
+			link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(JSON.stringify(obj)));
+			link.click();
+			console.log(obj);
+		}
+
+
+		function saveRequest() {
+			try {
+				var errors = $.editorRequest.getSession().getAnnotations();
+				if (errors.length > 0 ) {
+					$.notify("Please check your code:" + "\n" + errors[0].text, "error");
+					$.editorRequest.moveCursorTo(errors[0].row,errors[0].column);
+					return;
+				}
+				saveCursor();
+				var mock = $('#mock').val()||"";
+				mock = mock.replace(/\//g,'');
+				// localStorage.setItem(mock,$.editorRequest.getValue());
+				localStorage.setItem('editorRequest:'+mock,$.editorRequest.getValue());
+				$.notify("Request Saved", "success");
+			} catch (err) {
+				$.notify("Can not save Request!" + "\n" + err.message, "error");
+			}
+		}
+
+		function loadDefaults(mock){
+			setTimeout(function() {
+				if (localStorage.getItem('editorRequest:visible') === "false" )
+					$('i[data-to=editorRequest]')[0].click();
+			},500);
+
+			m = mock.replace(/\//g,'');
+			if (m.substr(m.length - 5) === '.test') {
+				$('#saveReqParams').attr('disabled',true);
+				$.editorRequest.setValue("{\"info\":\"The params will be ignored, Params must be on: _test.json\"}",1);
+				return;
+			}
+
+			$('#saveReqParams').attr('disabled',false);
+			if (!m || $.trim(m) === '' || localStorage.getItem('editorRequest:'+m) === null ){
+				$.editorRequest.setValue("",1);
+				return;
+			}
+			$.editorRequest.setValue(localStorage.getItem('editorRequest:'+m),1);
+
+		}
+
+		function saveCursor() {
+			localStorage.setItem('editorRequest:cursor_'+$('#mock').val().replace(/\//g,''),JSON.stringify($.editorRequest.getCursorPosition()));
+		}
+		function getCursor() {
+			var r = null;
+			try {
+				// debugger;
+				r = JSON.parse(localStorage.getItem('editorRequest:cursor_'+$('#mock').val().replace(/\//g,'')));
+				if (r === null)
+					r = JSON.parse('{"row":0,"column":0}');
+			} catch(ex) {
+
+			}
+			return r;
+		}
+
+		function callMock() {
+			document.location.href = '/#' + $('#mock').val();
+			if (!$.editorResponse || $('#mock').val().replace(/\//g,'') === '')
+				return false;
+
+			if (!$( "#editorResponse").is(':visible')){
+				$('i[data-to=editorResponse]')[0].click();
+			}
+
+			var d = $.editorRequest.getValue();
+			d = d.replace(/\s*\/\/.*\n/g, '\n').replace(/\s*\/\*[\s\S]*?\*\//g, '');
+			if (document.location.href.indexOf('.test') > -1) {
+				d = null;
+			} else {
+				try {
+					if ($.trim(d) === "")
+						d = "{}";
+					else
+						d = JSON.parse( d );
+				} catch (ee) {
+					console.log("Invalid Request Parameters");
+					// alert("Invalid Request Parameters");
+					return;
+				}
+			}
+			$.editorRequest.moveCursorToPosition(getCursor());
+			// saveCursor();
+			$.editorResponse.setValue("Please wait ...");
+			$.ajax({
+				url: $('#mock').val(),
+				data: d,
+				//success: function(result){
+				//	$.editorResponse.setTheme("ace/theme/tomorrow");
+				// },
+				// error:function(xhr,status,error) {
+				// 	if (xhr.status === 500) {
+					 //  	$.editorResponse.getSession().setMode("ace/mode/c9search");
+				//     	$.editorResponse.setTheme("ace/theme/twilight");
+				// 	}
+				// },
+				complete:function(xhr,status) {
+					try {
+						$.editorResponse.setValue("")
+						$.editorResponse.insert(JSON.stringify(JSON.parse(xhr.responseText), null, "\t"));
+					} catch(ex) {
+						$.editorResponse.insert(JSON.stringify (xhr.responseText));
+					}
+					$('#editorRequest textarea').focus();
+					saveCursor();
+				}
+			});
+		}
+
+		function initShortCuts() {
+			$(window).keydown(function (e){
+				// console.log(e.keyCode);
+				if ((e.metaKey || e.ctrlKey) && e.keyCode == 83) { /*ctrl+s or command+s*/
+					saveRequest();
+					e.preventDefault();
+					return false;
+				}
+				if ((e.metaKey || e.ctrlKey) && e.keyCode == 69) { /*ctrl+e or command+e*/
+					callMock();
+					e.preventDefault();
+					return false;
+				}
+				if ((e.metaKey || e.ctrlKey) && e.keyCode == 73) { /*ctrl+e or command+e*/
+					$('#gridSystemModal').modal('toggle');
+					e.preventDefault();
+					return false;
+				}
+			});
+
+		}
+
+		if (window.location.hash !== "") {
+			$('#mock').val(window.location.hash.replace('#',''));
+			loadDefaults($('#mock').val());
+		}
+
+		$(document).ready(function() {
+			$('body').addClass('sidebar-collapse');
+			initShortCuts();
+			// $('.sidebar-toggle')[0].click();
+			setTimeout(callMock,500);
+		});
+
+	</script>
+
+</body>
+</html>

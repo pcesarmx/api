@@ -1,0 +1,49 @@
+{
+	"name": "portfolio-api",
+	"version": "1.0.0",
+	"description": "API to receive contact me message to your email or mobile",
+	"author": "Paulo C Ruvalcaba",
+	"license": "MIT",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pcesarmx/portfolio-api.git"
+	},
+	"keywords": [
+		"portfolio api",
+		""
+	],
+	"homepage": "https://github.com/pcesarmx/portfolio-api/blob/master/README.md",
+	"dependencies": {
+		"body-parser": "^1.15.2",
+		"child_process": "^1.0.2",
+		"deferred": "^0.7.4",
+		"express": "^4.13.3",
+		"extend": "^3.0.0",
+		"glob": "^6.0.2",
+		"moment": "^2.13.0",
+		"moment-timezone": "^0.5.11",
+		"nodemailer": "^4.1.0",
+		"path": "^0.12.7",
+		"twilio": "^2.8.0",
+		"underscore": "^1.8.3",
+		"unidecode": "^0.1.8",
+		"validator": "^4.5.0"
+	},
+	"devDependencies": {
+		"grunt": "^1.0.2",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-jshint": "^1.1.0",
+		"grunt-contrib-watch": "^1.0.0",
+		"grunt-livereload": "^0.1.3",
+		"grunt-nodemon": "^0.4.2",
+		"grunt-open": "^0.2.3",
+		"grunt-parallel": "^0.5.1",
+		"grunt-run": "^0.8.0",
+		"multer": "^1.1.0",
+		"nodemon": "^1.8.1"
+	}
+}
