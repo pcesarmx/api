@@ -16,7 +16,7 @@ module.exports = function (main) {
 		log_debug: true,
 		stage: "v1",
 		environment: ((process.env.DEV_ENV) ? process.env.DEV_ENV : "devel"), //AWS
-		staticpath: 'public/'
+		staticpath: 'public/adminsite/'
 	};
 	// DEVELOPMENT SETTINGS
 	ENV.TWILIO = SETTINGS.TWILIO || {};

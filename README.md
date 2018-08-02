@@ -1,71 +1,74 @@
-#  Portfolio-api - API](https://github.com/pcesarmx/portfolio-api/)
+# [Portfolio-API](http://api.pruvalcaba.com/)
 
-[Portfolio-API](https://github.com/pcesarmx/portfolio-api/) This module helps the "contact me" form from the portfolio to process the requests using nodejs or aws lambda functions.
+* This module helps the "contact me" form from the portfolio to process the requests using nodejs or aws lambda functions.
 
-## Preview
-
-
+## Preview (DEVEL)
 [![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview1.png)](#)
-[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)](#)
 
-<!-- <a href="http://api.pruvalcaba.com/" target="_blank">View Live Preview using "Contact Page"</a> -->
-**[View Live Preview using "Contact Page" ](http://api.pruvalcaba.com/){:target="_blank"}**
+## Preview (PRODUCTION)
+[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview3.png)](http://api.pruvalcba.com)
+
+<a href="http://pruvalcaba.com/" target="_blank">View Live Preview using "Contact" link</a>
+<!-- **[View Live Preview using "Contact Page" ](http://pruvalcaba.com/)** -->
 
 ## Status
-
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pcesarmx/portfolio/master/LICENSE)
 
 ## Download and Installation
-
 To begin using this module, choose one of the following options to get started:
-
-* Download the latest release Or clone the repo: `git clone https://github.com/pcesarmx/portfolio-api.git`
-
-* Install grunt (if you don't have it installed) `npm i -g grunt` 
-
-## Usage
-npm i
-
-grunt
+* Clone the repo: 
+ `git clone https://github.com/pcesarmx/portfolio-api.git`
+* Install grunt (if you don't have it installed) 
+ `npm i -g grunt` 
+* Install project dependencies
+ `npm i`
 
 ### Basic Usage
+After download and install: 
+* Edit or cretae a js file `/v1/{your_endpoint}/{your_endpoint}.js`.
+* Edit or cretae a js file `/classes/{your_class}.js`.
+* edit `_private_config.json` with your own (twilio / gmail settings) and rename the file to `private_config.json`
+* Run the project
+ `grunt`
+* Open your web browser: localhost:5800
 
-After downloading: 
+## Passing Parameters
 
-Eimply edit or cretae a js file `/v1/{your_endpoint}/{your_endpoint}.js`.
+* DEVEL
+ {
+    "action":"testapi",
+    "name": "Albert Roberts",
+    "phone": "5591112233",
+    "email": "test@qq.com",
+    "message": "Testing SMS and email"
+ }
 
-Edit or cretae a js file `/classes/{your_class}.js`.
+* PRODUCTION
+ Calling `http://localhost:5800/{your_endpoint}` using `GET` or `POST` (Same parameter names that DEVEL)
 
-edit `_private_config.json` with your own (twilio / gmail settings) and rename the file to `private_config.json`
 
-Open your web browser: localhost:5800
 
 ### Advanced Usage
-
-After downloading, simply edit or cretae a json file `/v1/{your_endpoint}/_test.json` to perform your test.
+* After download and install, simply edit or cretae a json file `/v1/{your_endpoint}/_test.json` to perform your test.
+[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)](#)
 
 ### Deploy to production
-
 AWS Elasticbeanstalk Deploy:
-
 * `eb init`
-
 * `eb create [ENV_NAME]`
-
-* `eb setenv DEV_ENV=production` or all at once `eb setenv DEV_ENV=production TWILIO_NUMBER=+1112223333 ... [all your config features]` See `_private_config.json` and `config.js`
-
+* `eb setenv DEV_ENV=production` 
+**Or all at once: `eb setenv DEV_ENV=production TWILIO_NUMBER=+1112223333 ... [all your config features]`**
+**See `_private_config.json` and `config.js`**
 * `eb use [ENV_NAME]`
-
-* Remember to commit your changed before `eb deploy`
-
+**Remember to always commit your changed before `eb deploy`**
 * `eb deploy` or `eb deploy [ENV_NAME]`
-
 
 AWS Lambda - GATEWAY Deploy:
 
 * Coming Soon ...
 
-***[More info about EB CLI ](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html){:target="_blank"}***
+<a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html" target="_blank">More info about EB CLI</a>
+<!-- ***[More info about EB CLI ](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html){:target="_blank"}*** -->
 
 #### Grunt Tasks
 
@@ -77,7 +80,7 @@ Have a bug or an issue with this template? [Open a new issue](https://github.com
 
 ## Custom Builds
 
-You can hire Portfolio-api to create a custom build of any template, or create something from scratch. For more information, visit my page **[custom design services page](http://pruvalcaba.com/)**.
+You can hire Portfolio-api to create a custom build of any template, or create something from scratch. For more information, **[visit my freelancer page](http://pruvalcaba.com/)**.
 
 ## About
 
