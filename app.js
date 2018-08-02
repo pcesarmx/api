@@ -20,7 +20,9 @@ app.use(express.static(config.staticpath));
 //CORS
 var allowCrossDomain = function (req, res, next) {
 	// res.header('Access-Control-Allow-Origin', '*');
-	var allowedOrigins = ["http://localhost:3000", "http://pruvalcaba.com", "http://www.pruvalcaba.com"];
+	var allowedOrigins = ["http://pruvalcaba.com", "http://www.pruvalcaba.com"];
+	if (config.environment !== 'production')
+		allowedOrigins.push("http://localhost:3000"); // DO NOT USE localhost ON PRODUCTION
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 	var origin = req.headers.origin;
 	if (allowedOrigins.indexOf(origin) > -1) {

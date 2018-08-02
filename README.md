@@ -1,15 +1,14 @@
-# [Portfolio-API](http://api.pruvalcaba.com/)
+# Portfolio-API
 
-* This module helps the "contact me" form from the portfolio to process the requests using nodejs or aws lambda functions.
+* This module helps the **["contact me"](https://github.com/pcesarmx/portfolio/)** page to process the requests using nodejs or aws lambda functions.
 
 ## Preview (DEVEL)
-[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview1.png)](#)
+![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview1.png)
 
 ## Preview (PRODUCTION)
-[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview3.png)](http://api.pruvalcba.com)
+![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview3.png)
 
-<a href="http://pruvalcaba.com/" target="_blank">View Live Preview using "Contact" link</a>
-<!-- **[View Live Preview using "Contact Page" ](http://pruvalcaba.com/)** -->
+**[View Live Preview using "Contact Page"](http://pruvalcaba.com/)**
 
 ## Status
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pcesarmx/portfolio/master/LICENSE)
@@ -35,6 +34,7 @@ After download and install:
 ## Passing Parameters
 
 * DEVEL
+```
  {
     "action":"testapi",
     "name": "Albert Roberts",
@@ -42,15 +42,14 @@ After download and install:
     "email": "test@qq.com",
     "message": "Testing SMS and email"
  }
-
+```
 * PRODUCTION
  Calling `http://localhost:5800/{your_endpoint}` using `GET` or `POST` (Same parameter names that DEVEL)
 
-
-
 ### Advanced Usage
 * After download and install, simply edit or cretae a json file `/v1/{your_endpoint}/_test.json` to perform your test.
-[![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)](#)
+
+![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)
 
 ### Deploy to production
 AWS Elasticbeanstalk Deploy:
@@ -67,8 +66,8 @@ AWS Lambda - GATEWAY Deploy:
 
 * Coming Soon ...
 
-<a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html" target="_blank">More info about EB CLI</a>
-<!-- ***[More info about EB CLI ](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html){:target="_blank"}*** -->
+
+***[See more info about EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html)***
 
 #### Grunt Tasks
 
@@ -80,11 +79,12 @@ Have a bug or an issue with this template? [Open a new issue](https://github.com
 
 ## Custom Builds
 
-You can hire Portfolio-api to create a custom build of any template, or create something from scratch. For more information, **[visit my freelancer page](http://pruvalcaba.com/)**.
+You can hire Paulo to create a custom build of any template, or create something from scratch. 
+For more information, **[visit my freelancer page](http://pruvalcaba.com/)**.
 
 ## About
 
-Portfolio-api is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Portfolio-api are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+Portfolio-api is an open source repository released under the MIT license, which means you can use them for any purpose, even for commercial projects.
 
 Portfolio-api was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.com/)**.
 
