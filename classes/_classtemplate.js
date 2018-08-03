@@ -1,5 +1,5 @@
 /*
- * @author: Paulo Ruvalcaba
+ * @author: My NAME
  * @module: __
  * @TODO Find a DOC GEN ...
  */

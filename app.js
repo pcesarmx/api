@@ -3,6 +3,8 @@
 var config = require('./config')(true);
 var request = require('request');
 var express = require('express');
+var json = require('comment-json');
+var fs = require('fs');
 var bodyParser = require('body-parser');
 var app = express();
 var _ = require("underscore");
@@ -115,23 +117,34 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
+
+
+
+
 // Improve later
 var UTIL = {
 	performTest: function (t) {
 		var def = deferred();
 		var deferredTask = [];
 		var deferredContexts = [];
-		var test = require(t);
+		// var test = require(t);
+		var test = json.parse(fs.readFileSync(t).toString(), null, true); // Removing comments on JSON file
 		var msg = "";
 		var x = 0;
 		try {
 			if (test.enabled !== false) {
 				var delay = test.delay_ms || 0;
+				var _tmp = t.split("/");
+				var operation = _tmp[_tmp.length - 2];
+				operation += ("/" + operation);
+
 				test.tests.forEach(function (testItem, i) {
+					testItem.event = testItem.event || {};
 					// console.log(testItem);
 					if (testItem.enabled !== false) {
 						var c = Object.create(context);
 						c.isDeferred = true;
+						testItem.event._operation = operation;
 						c.testingParams = JSON.stringify(testItem.event);
 						c.deferred = deferred();
 
@@ -146,6 +159,13 @@ var UTIL = {
 						}
 						deferredContexts.push(c);
 						deferredTask.push(c.deferred.promise);
+					} else {
+						var dummy = deferred();
+						dummy.resolve({
+							"testingParams": "TEST DISABLED",
+							"testResult": "test[" + i + "] has been disabled"
+						});
+						deferredTask.push(dummy.promise);
 					}
 				});
 
@@ -155,7 +175,7 @@ var UTIL = {
 				})(function (result) {
 					// console.log(result);
 					if (config.log_debug) {
-						msg = "ALL test have been passed :)";
+						msg = "ALL test done :)";
 						console.log(msg);
 					}
 				}, function (error) {

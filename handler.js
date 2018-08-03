@@ -14,16 +14,16 @@ exports[config.handler] = function (event, context) {
 		// 	return;
 		// }
 
-		if (!event.operation) {
+		if (!event._operation) {
 			context.done(null, {
 				"success": false,
-				"error": "operation not defined"
+				"error": "_operation not defined"
 			});
 			return;
 		}
 
 		context.config = config;
-		event.operation = event.operation || "ping/ping";
+		event._operation = event._operation || "ping/ping";
 
 		var p = [];
 
@@ -33,8 +33,8 @@ exports[config.handler] = function (event, context) {
 				// console.log("Lang & Settings init => ", resp[1]);
 				// console.log("LAMBDA ENABLED => ", resp[2]);
 
-				// console.log("EXECUTING => ", config.api_path + event.operation);
-				require(config.api_path + event.operation + '')(event, context);
+				// console.log("EXECUTING => ", config.api_path + event._operation);
+				require(config.api_path + event._operation + '')(event, context);
 			} catch (err) {
 				console.log("Error on execution:", err);
 			}
@@ -47,7 +47,7 @@ exports[config.handler] = function (event, context) {
 			});
 		});
 	} catch (ex) {
-		// ex.module = event.operation;
+		// ex.module = event._operation;
 		console.log("Handler catch ex => ", ex);
 		var err = JSON.stringify(ex);
 		context.fail((err === "{}") ? ex : err);

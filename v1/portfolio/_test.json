@@ -1,8 +1,9 @@
 {
 	"tests": [{
+		// Add custom flags to use in app.js: performTest(t)
+		"enabled": false,
 		"event": {
 			"mode": "keepalive",
-			"operation": "portfolio/portfolio",
 			"action": "testapi",
 			"name": "Albert Roberts",
 			"phone": "5591112233",
@@ -10,9 +11,9 @@
 			"message": "Testing SMS and email"
 		}
 	}, {
+		"enabled": false,
 		"event": {
 			"mode": "keepalive",
-			"operation": "portfolio/portfolio",
 			"action": "testapi",
 			"name": "Albert Roberts",
 			"phone": "5591112233",
