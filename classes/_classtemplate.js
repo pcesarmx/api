@@ -4,16 +4,19 @@
  * @TODO Find a DOC GEN ...
  */
 
-var deferred = require('deferred');
-var config = require("../config")()._config_;
+const deferred = require('deferred');
+const config = require("../config")()._config_;
 
 if (!config) {
 	throw new Error("__ CLASS ERROR: NO CONFIGURATION SETTINGS FOUND");
 }
 
-var __ = {
-	send: function (params) {
-		var def = deferred();
+const __ = {
+	test: () => {
+		return "OKK";
+	},
+	send: (params) => {
+		let def = deferred();
 
 		def.reject(error);
 		def.resolve(info);

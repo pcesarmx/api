@@ -1,9 +1,9 @@
-var deferred = require('deferred');
-var U = require('../../classes/util');
-var SMS = require('../../classes/twilio');
-var EMAIL = require('../../classes/gmail');
+const deferred = require('deferred');
+const U = require('../../classes/util');
+const SMS = require('../../classes/twilio');
+const EMAIL = require('../../classes/gmail');
 
-module.exports = function (event, context) {
+module.exports = (event, context) => {
 	if (!event || !event.action) {
 		context.fail({
 			"code": 1001,
@@ -29,11 +29,11 @@ module.exports = function (event, context) {
 			}), SMS.sendsms({
 				"mobile": "5593050938",
 				"msg": "Name: " + event.name + "\nPhone: " + event.phone + "\ne-mail:" + event.email + "\n\n" + event.message
-			})]).then(function (resp) {
+			})]).then((resp) => {
 				context.succeed({
 					"success": true
 				});
-			}).catch(function (err) {
+			}).catch((err) => {
 				console.log("err => ", err);
 				context.fail({
 					"data": err

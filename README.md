@@ -56,10 +56,10 @@ AWS Elasticbeanstalk Deploy:
 * `eb init`
 * `eb create [ENV_NAME]`
 * `eb setenv DEV_ENV=production` 
-** Or all at once: `eb setenv DEV_ENV=production TWILIO_NUMBER=+1112223333 ... [all your config features]`**
-** See `_private_config.json` and `config.js`**
+    * Or all at once: `eb setenv DEV_ENV=production TWILIO_NUMBER=+1112223333 ... [all your config features]`
+    * See `_private_config.json` and `config.js`
 * `eb use [ENV_NAME]`
-**Remember to always commit your changed before `eb deploy`**
+    * Remember to always commit your changed before `eb deploy`
 * `eb deploy` or `eb deploy [ENV_NAME]`
 
 AWS Lambda - GATEWAY Deploy:

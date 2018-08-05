@@ -4,18 +4,18 @@
  * @TODO Find a DOC GEN ...
  */
 
-var deferred = require('deferred');
-var config = require("../config")().GMAIL;
-var nodemailer = require('nodemailer');
+const deferred = require('deferred');
+const config = require("../config")().GMAIL;
+const nodemailer = require('nodemailer');
 
 if (!config) {
 	throw new Error("MAIL CLASS ERROR: NO CONFIGURATION SETTINGS FOUND");
 }
 
-var GMAIL = {
-	send: function (params) {
-		var def = deferred();
-		var transporter = nodemailer.createTransport({
+const GMAIL = {
+	send: (params) => {
+		let def = deferred();
+		let transporter = nodemailer.createTransport({
 			service: 'gmail',
 			auth: {
 				user: config.USER,
@@ -29,7 +29,7 @@ var GMAIL = {
 			cc: (params.cc ? (params.cc + ',') : '') + config.cc,
 			subject: params.subject,
 			html: params.body || 'hello world!'
-		}, function (error, info) {
+		}, (error, info) => {
 			// console.log(error);
 			// console.log(info);
 			if (error) {

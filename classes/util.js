@@ -5,22 +5,22 @@
  */
 
 
-var deferred = require('deferred');
-var unidecode = require('unidecode');
-var config = require("../config")();
-var _ = require("underscore");
+const deferred = require('deferred');
+const unidecode = require('unidecode');
+const config = require("../config")();
+const _ = require("underscore");
 
 
-var UTIL = {
+const UTIL = {
 	extend: _.extend,
 	sortBy: _.sortBy,
-	validateEmail: function (email) {
-		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	validateEmail: (email) => {
+		let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return re.test(email);
 	},
-	removeAcentos: function (str) {
+	removeAcentos: (str) => {
 		try {
-			var r = str.toLowerCase();
+			let r = str.toLowerCase();
 			non_asciis = {
 				'a': '[àáâãäå]',
 				'ae': 'æ',
@@ -33,35 +33,35 @@ var UTIL = {
 				'u': '[ùúûűü]',
 				'y': '[ýÿ]'
 			};
-			for (var i in non_asciis) {
+			for (let i in non_asciis) {
 				r = r.replace(new RegExp(non_asciis[i], 'g'), i);
 			}
 			return r;
 		} catch (err) {}
 		return str;
 	},
-	findByKey: function (array, key, value) {
-		for (var i = 0; i < array.length; i++) {
+	findByKey: (array, key, value) => {
+		for (let i = 0; i < array.length; i++) {
 			if (array[i][key] === value) {
 				return array[i];
 			}
 		}
 		return null;
 	},
-	escape: function (str) {
+	escape: (str) => {
 		return (str + "").replace(/\\/g, "\\\\")
 			.replace(/\$/g, "\\$")
 			.replace(/'/g, "\\'")
 			.replace(/"/g, "\\\"");
 	},
-	round: function (num, places) {
+	round: (num, places) => {
 		if (!places)
 			places = 4;
 		return +(Math.round(num + "e+" + places) + "e-" + places);
 		// return Math.round(num * 1000) / 1000;
 	},
 	// Limpia el formato de un # de telefono en USA
-	extractPhone: function (phone) {
+	extractPhone: (phone) => {
 		try {
 			// return phone.replace(/\-/g, '').replace(/"/g, "").replace(/'/g, "").replace(/\(|\)/g, "").replace(/ /g, "").slice(-10);
 			return phone.match(/\d+/g).join('').slice(-10);
@@ -69,7 +69,7 @@ var UTIL = {
 			return phone;
 		}
 	},
-	getDate: function () {
+	getDate: () => {
 		try {
 			return new Date().toString("yyyyMMddHHmmss").
 			replace(/ T/, ' ').
@@ -78,11 +78,11 @@ var UTIL = {
 			return new Date().toGMTString();
 		}
 	},
-	parse: function (attr) {
+	parse: (attr) => {
 		try {
-			// var crappyJSON = attr;
-			// var fixedJSON = crappyJSON.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ');
-			// var aNiceObject = JSON.parse(fixedJSON);
+			// let crappyJSON = attr;
+			// let fixedJSON = crappyJSON.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ');
+			// let aNiceObject = JSON.parse(fixedJSON);
 
 			return JSON.parse(attr);
 		} catch (err) {
@@ -91,12 +91,12 @@ var UTIL = {
 			return attr;
 		}
 	},
-	encodeMSG: function (msg) {
+	encodeMSG: (msg) => {
 		try {
-			// var m = myString = JSON.parse(JSON.stringify(msg));
-			// var m = encodeURIComponent(msg);
-			// var m = escape(msg);
-			var m = unidecode(msg);
+			// let m = myString = JSON.parse(JSON.stringify(msg));
+			// let m = encodeURIComponent(msg);
+			// let m = escape(msg);
+			let m = unidecode(msg);
 			// console.log("m => ", m);
 			return m;
 		} catch (err) {
@@ -104,9 +104,9 @@ var UTIL = {
 			return msg;
 		}
 	},
-	isEmptyJSON: function (obj) {
+	isEmptyJSON: (obj) => {
 		// jQuery.isEmptyObject(objeto)
-		for (var i in obj) {
+		for (let i in obj) {
 			return false;
 		}
 		return true;

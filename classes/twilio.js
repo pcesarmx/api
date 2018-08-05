@@ -4,18 +4,18 @@
  * @TODO Find a DOC GEN ...
  */
 
-var deferred = require('deferred');
-var config = require("../config")().TWILIO;
-var twilio = require('twilio');
-var unidecode = require('unidecode');
+const deferred = require('deferred');
+const config = require("../config")().TWILIO;
+const twilio = require('twilio');
+const unidecode = require('unidecode');
 
 if (!config) {
 	throw new Error("TWILIO CLASS ERROR: NO CONFIGURATION SETTINGS FOUND");
 }
 
-var TWILIO = {
-	sendsms: function (params) {
-		var def = deferred();
+const TWILIO = {
+	sendsms: (params) => {
+		let def = deferred();
 		if (params.mobile === '') {
 			def.reject({
 				"error": "TWILIO: Invalid Params"
@@ -23,7 +23,7 @@ var TWILIO = {
 			return def.promise;
 		}
 
-		var client = new twilio.RestClient(config.ACC_SID, config.TOKEN);
+		let client = new twilio.RestClient(config.ACC_SID, config.TOKEN);
 		try {
 			params.mobile = params.mobile;
 			if (params.mobile.lenght <= 10)
@@ -34,7 +34,7 @@ var TWILIO = {
 			callerid: 'REMOTE APP',
 			from: config.NUMBER,
 			body: unidecode(params.msg) || 'Testing Twilio and node.js'
-		}, function (error, message) {
+		}, (error, message) => {
 			if (!error) {
 				def.resolve({
 					"msg": "Message has been send to: " + params.mobile,

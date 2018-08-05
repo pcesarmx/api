@@ -11,7 +11,7 @@ module.exports = function (main) {
 		api_path: './v1/',
 		handler: 'handler',
 		use_mocks: true,
-		use_pre_test: false,
+		use_pre_test: false, // Not Ready yet
 		log_context: false,
 		log_debug: true,
 		stage: "v1",

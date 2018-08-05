@@ -1,7 +1,8 @@
 {
+	"delay_ms": 1000,
 	"tests": [{
-		// Add custom flags to use in app.js: performTest(t)
-		"enabled": false,
+		// Add custom flags to use in lib/server-utils.js: performTest(t)
+		// "enabled": false,
 		"event": {
 			"mode": "keepalive",
 			"action": "testapi",

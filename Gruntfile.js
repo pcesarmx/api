@@ -7,11 +7,12 @@ module.exports = function (grunt) {
 		jshint: {
 			all: {
 				src: [
-					'classes/**/*.js', 'v1/**/*.js', 'v1/**/_test.json', 'testserver.js', 'app.js'
+					'lib/**/*.js', 'classes/**/*.js', 'v1/**/*.js', 'v1/**/_test.json', 'app.js'
 				],
 			},
 			options: {
-				force: false
+				force: false,
+				esversion: 6
 			}
 		},
 		watch: {
@@ -23,7 +24,7 @@ module.exports = function (grunt) {
 			},
 			js: {
 				files: [
-					'classes/**/*.js', 'v1/**/*.js', 'testserver.js', 'app.js'
+					'lib/**/*.js', 'classes/**/*.js', 'v1/**/*.js', 'app.js'
 				],
 				tasks: ['jshint'],
 			},
