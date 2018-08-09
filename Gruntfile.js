@@ -1,7 +1,3 @@
-const path = require('path');
-const request = require('request');
-const config = require('./config')().APIGATEWAY;
-
 module.exports = (grunt) => {
 	grunt.initConfig({
 		jshint: {
@@ -124,6 +120,7 @@ module.exports = (grunt) => {
 			cmd_custom_files += " ${0};";
 		}
 
+		// const cmd_build_pkg = "rm -rf ${0}; mkdir ${0}; ${CUSTOM_FOLDERS} ${CUSTOM_FILES} cp -r classes ${0}; cp -r lib ${0}; cp -r v1 ${0}; cp config.js ${0}; cp private_config.json ${0}; cp handler.js ${0}; cd ${0}; zip -rq ../${1} ./; cd ..; rm -r ${0};";
 		const cmd_build_pkg = "rm -rf ${0}; mkdir ${0}; ${CUSTOM_FOLDERS} ${CUSTOM_FILES} cp -r classes ${0}; cp -r lib ${0}; cp -r v1 ${0}; cp -r node_modules ${0}; cp config.js ${0}; cp private_config.json ${0}; cp handler.js ${0}; cd ${0}; zip -rq ../${1} ./; cd ..; rm -r ${0};";
 		const cmd_clean = "rm -f /p/a/t/h ${1};"
 			// const cmd_clean = "rm ${1};"
@@ -314,7 +311,7 @@ module.exports = (grunt) => {
 
 		function createLambda(cb) {
 			let exec = require('child_process').exec;
-			let cmd = "aws lambda create-function --region " + config.region + " --function-name " + lambda_name + " --runtime " + config.lambda_runtime + " --role " + config.lambda_role + " --handler " + config.lambda_handler + " --zip-file fileb://" + PKG_NAME;
+			let cmd = "aws lambda create-function --region " + config.region + " --function-name " + lambda_name + " --runtime " + config.lambda_runtime + " --role " + config.lambda_role + " --timeout " + config.lambda_timeout_sec + " --handler handler." + config.lambda_handler_name + " --zip-file fileb://" + PKG_NAME;
 			cmd += "; " + LAMBDA_BUILD_CMD_CLEAN;
 			console.log(("CREATING LAMBDA: " + lambda_name + " ...").magenta);
 			exec(cmd, function (error, stdout, stderr) {
@@ -331,6 +328,7 @@ module.exports = (grunt) => {
 		function updateLambda(cb) {
 			let exec = require('child_process').exec;
 			let cmd = "aws lambda update-function-code --function-name " + lambda_name + " --zip-file fileb://" + PKG_NAME;
+			cmd += ";aws lambda update-function-configuration --function-name " + lambda_name + " --runtime " + config.lambda_runtime + " --role " + config.lambda_role + " --timeout " + config.lambda_timeout_sec + " --handler handler." + config.lambda_handler_name;
 			cmd += "; " + LAMBDA_BUILD_CMD_CLEAN;
 			console.log(("UPDATING LAMBDA [" + PKG_NAME + "] => " + lambda_name + " ...\n").magenta);
 			exec(cmd, function (error, stdout, stderr) {
@@ -464,7 +462,7 @@ module.exports = (grunt) => {
 				}
 			});
 		} else {
-			console.log('If you want send to aws you must to use [--deploy || --deploy-all] in your command.')
+			console.log('If you want send to aws lambda you must to use [--deploy || --deploy-all] in your command.')
 		}
 
 

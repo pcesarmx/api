@@ -23,3 +23,13 @@
 		}
 	}]
 }
+/* Lamnda Test
+{
+  "action": "testapi",
+  "name": "Lamnda Caller",
+  "phone": "5591112233",
+  "email": "test@qq.com",
+  "message": "Testing SMS and email",
+  "_operation": "portfolio/portfolio"
+}
+*/

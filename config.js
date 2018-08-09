@@ -9,7 +9,7 @@ try {
 module.exports = function (main) {
 	let ENV = {
 		api_path: './v1/',
-		handler: 'handler',
+		// handler: 'handler',
 		use_mocks: true,
 		use_pre_test: false, // Not Ready yet
 		log_context: false,
@@ -30,6 +30,8 @@ module.exports = function (main) {
 		ENV.APIGATEWAY.version = ENV.version;
 	}
 	ENV.APIGATEWAY.version = ENV.APIGATEWAY.version.replace(/[^a-zA-Z0-9 ]/g, "")
+	ENV.APIGATEWAY.lambda_handler_name = ENV.APIGATEWAY.lambda_handler_name || "handler";
+	ENV.APIGATEWAY.lambda_timeout_sec = ENV.APIGATEWAY.lambda_timeout_sec || "3";
 
 	if (ENV.environment === 'test' || ENV.environment === 'devel') {
 

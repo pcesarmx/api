@@ -10,10 +10,22 @@
 		"CC": "optioanl emails separates by `,`"
 	},
 	"APIGATEWAY": {
-		"id": "your_api_gateway_deploy_id", //qsdmsg0i8a
-		"region": "region", //us-west-2
-		"account": "aws_account", //673862152704
-		"lambda": "lambda_name", // portfolioapi
-		"lambda_version": false // Must be ''|NULL|false
+		"swagger": "2.0",
+		"region": "us-west-2",
+		"account": "aws_acc_number",
+		"lambda": "lambda_name",
+		"lambda_version": false,
+		"lambda_runtime": "nodejs8.10",
+		"lambda_role": "arn:aws:iam::[account]:role/[awsrole]",
+		"lambda_handler_name": "handler",
+		"lambda_timeout_sec": "10",
+		"version": "default",
+		"base_path": "default",
+		"schemes": ["http", "https"],
+		"swagger_host": "http://localhost:5800/swagger/",
+		"deploy_cmds": {
+			"cmd_custom_copy_dirs": [],
+			"cmd_custom_copy_files": ["README.md"]
+		}
 	}
 }

@@ -3,7 +3,7 @@ const config = require('./config')("");
 const deferred = require('deferred');
 // THIS IS A Server-less Module
 
-exports[config.handler] = function (event, context) {
+exports[config.APIGATEWAY.lambda_handler_name] = function (event, context) {
 	// console.log("LAMBDA ENV => ", config.environment, " API ENV => ", event.ENV);
 	try {
 		// if (config.environment !== event.ENV && JSON.parse(event.PROTECT_ENV || true) === true) {
@@ -23,7 +23,7 @@ exports[config.handler] = function (event, context) {
 		}
 
 		context.config = config;
-		event._operation = event._operation || "ping/ping";
+		event._operation = event._operation || "";
 
 		var p = [];
 
