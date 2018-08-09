@@ -1,4 +1,4 @@
-var SETTINGS = {};
+let SETTINGS = {};
 try {
 	SETTINGS = require('./private_config.json');
 } catch (ex) {
@@ -7,20 +7,29 @@ try {
 }
 
 module.exports = function (main) {
-	var ENV = {
+	let ENV = {
 		api_path: './v1/',
 		handler: 'handler',
 		use_mocks: true,
 		use_pre_test: false, // Not Ready yet
 		log_context: false,
 		log_debug: true,
-		stage: "v1",
+		// stage: "v1.0",
+		version: "v1.0", // API Version
 		environment: ((process.env.DEV_ENV) ? process.env.DEV_ENV : "devel"), //AWS
 		staticpath: 'public/adminsite/'
 	};
 	// DEVELOPMENT SETTINGS
 	ENV.TWILIO = SETTINGS.TWILIO || {};
 	ENV.GMAIL = SETTINGS.GMAIL || {};
+	ENV.APIGATEWAY = SETTINGS.APIGATEWAY || {};
+	if (!ENV.APIGATEWAY.base_path || ENV.APIGATEWAY.base_path === "default") {
+		ENV.APIGATEWAY.base_path = ENV.api_path.replace(/[\/.]/g, "").toUpperCase();
+	}
+	if (!ENV.APIGATEWAY.version || ENV.APIGATEWAY.version === "default") {
+		ENV.APIGATEWAY.version = ENV.version;
+	}
+	ENV.APIGATEWAY.version = ENV.APIGATEWAY.version.replace(/[^a-zA-Z0-9 ]/g, "")
 
 	if (ENV.environment === 'test' || ENV.environment === 'devel') {
 

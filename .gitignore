@@ -8,7 +8,8 @@ logs
 package-lock.json
 
 # Compiled
-# build/Release
+.tmpdeploy
+.lambda_module.zip
 
 # Dependency directory
 node_modules

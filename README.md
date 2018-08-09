@@ -1,4 +1,4 @@
-# Portfolio-API
+# API
 
 * This module helps the **["contact me"](https://github.com/pcesarmx/portfolio/)** page to process the requests using nodejs or aws lambda functions.
 
@@ -59,7 +59,7 @@ AWS Elasticbeanstalk Deploy:
     * Or all at once: `eb setenv DEV_ENV=production TWILIO_NUMBER=+1112223333 ... [all your config features]`
     * See `_private_config.json` and `config.js`
 * `eb use [ENV_NAME]`
-    * Remember to always commit your changed before `eb deploy`
+    * Remember to always commit your changes before `eb deploy`
 * `eb deploy` or `eb deploy [ENV_NAME]`
 
 AWS Lambda - GATEWAY Deploy:
@@ -84,9 +84,9 @@ For more information, **[visit my freelancer page](http://pruvalcaba.com/)**.
 
 ## About
 
-Portfolio-api is an open source repository released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+API is an open source repository released under the MIT license, which means you can use them for any purpose, even for commercial projects.
 
-Portfolio-api was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.com/)**.
+API was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.com/)**.
 
 * https://github.com/pcesarmx
 

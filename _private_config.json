@@ -8,5 +8,12 @@
 		"USER": "youremail@gmail.com",
 		"PASS": "YOUR_PASSWORD",
 		"CC": "optioanl emails separates by `,`"
+	},
+	"APIGATEWAY": {
+		"id": "your_api_gateway_deploy_id", //qsdmsg0i8a
+		"region": "region", //us-west-2
+		"account": "aws_account", //673862152704
+		"lambda": "lambda_name", // portfolioapi
+		"lambda_version": false // Must be ''|NULL|false
 	}
 }

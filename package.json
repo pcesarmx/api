@@ -1,7 +1,7 @@
 {
 	"name": "portfolio-api",
 	"version": "1.0.0",
-	"description": "API to receive contact me message to your email or mobile",
+	"description": "NodeJS API project. twilio, gmail ...",
 	"author": "Paulo C Ruvalcaba",
 	"license": "MIT",
 	"main": "app.js",
