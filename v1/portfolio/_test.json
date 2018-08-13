@@ -16,9 +16,9 @@
 		"event": {
 			"mode": "keepalive",
 			"action": "testapi",
-			"name": "Albert Roberts",
-			"phone": "5591112233",
-			"email": "test@qq.com",
+			"name": "Mario Stone",
+			"phone": "3334445555",
+			"email": "test@test2.com",
 			"message": "Testing SMS and email"
 		}
 	}]

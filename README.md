@@ -26,14 +26,14 @@ To begin using this module, choose one of the following options to get started:
 After download and install: 
 * Edit or cretae a js file `/v1/{your_endpoint}/{your_endpoint}.js`.
 * Edit or cretae a js file `/classes/{your_class}.js`.
-* edit `_private_config.json` with your own (twilio / gmail settings) and rename the file to `private_config.json`
+* Create the file [**`private_config.json`**](#private-config) with your own twilio[^twilio], gmail[^gmail] and AWS[^aws] settings.
+    **You can use**  `_private_config.json` **as a base example**.
 * Run the project
  `grunt`
 * Open your web browser: localhost:5800
 
-## Passing Parameters
-
-* DEVEL
+## Test Parameters
+* ### DEVEL
 ```
  {
     "action":"testapi",
@@ -43,16 +43,55 @@ After download and install:
     "message": "Testing SMS and email"
  }
 ```
-* PRODUCTION
- Calling `http://localhost:5800/{your_endpoint}` using `GET` or `POST` (Same parameter names that DEVEL)
+* ### PRODUCTION
+Calling `http://localhost:5800/{your_endpoint}` using `GET` or `POST` (Same parameter names that DEVEL)
 
-### Advanced Usage
-* After download and install, simply edit or cretae a json file `/v1/{your_endpoint}/_test.json` to perform your test.
 
-![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)
+## Configuration Settings
+* The file `private_config.json` will contain all the API Keys, credentials, production params that supports the implementation. 
+* **This file will be ignored on the repository**.
 
-### Deploy to production
-AWS Elasticbeanstalk Deploy:
+[id]: private-config "Configuration Settings"
+```
+{
+    "TWILIO": {
+        "NUMBER": "+15591112222",
+        "ACC_SID": "YOUR_TWILIO_ACC_SID",
+        "TOKEN": "YOUR_TWILIO_TOKEN"
+    },
+    "GMAIL": {
+        "USER": "youremail@gmail.com",
+        "PASS": "YOUR_PASSWORD",
+        "CC": "optional emails separates by `,`"
+    },
+    "APIGATEWAY": {
+        "swagger": "2.0",
+        "region": "us-west-2",
+        "account": "aws_acc_number",
+        "lambda": "lambda_name",
+        "lambda_version": false,
+        "lambda_runtime": "nodejs8.10",
+        "lambda_role": "arn:aws:iam::[account]:role/[awsrole]",
+        "lambda_handler_name": "handler",
+        "lambda_timeout_sec": "10",
+        "version": "default",
+        "base_path": "default",
+        "schemes": ["http", "https"],
+        "swagger_host": "http://localhost:5800/swagger/",
+        "deploy_cmds": {
+            "cmd_custom_copy_dirs": [],
+            "cmd_custom_copy_files": ["README.md"]
+        }
+    }
+}
+```
+__Note:__ You can also protect your deploy by overwriting your production settings on production enviroment. See [Advanced Usage](#overwritesettings)
+
+
+### Deploy to production using **AWS**
+##### **Elasticbeanstalk Deploy:**
+[id]: deploy_eb "Configuration Settings" 
+* Install **The Elastic Beanstalk Command Line Interface (EB CLI)[^ebcli]**
 * `eb init`
 * `eb create [ENV_NAME]`
 * `eb setenv DEV_ENV=production` 
@@ -61,17 +100,127 @@ AWS Elasticbeanstalk Deploy:
 * `eb use [ENV_NAME]`
     * Remember to always commit your changes before `eb deploy`
 * `eb deploy` or `eb deploy [ENV_NAME]`
+_See more info about EB CLI_ [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html)
 
-AWS Lambda - GATEWAY Deploy:
-
-* Coming Soon ...
-
-
-***[See more info about EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html)***
-
+##### **Lambda - GATEWAY Deploy:**
+* Be sure all your references on [the Configuration file](#private-config) are matching your aws settings **(APIGATEWAY settings)**.
+* Edit `apigateway.swagger.config.json`
+```
+{
+    "host": "execute-api.us-west-2.amazonaws.com",
+    "resources": [{
+        "path": "/",
+        "requestTemplate": {}
+    }, {
+        "path": "/contactme",
+        "requestTemplate": {
+            "_operation": "portfolio/portfolio",
+            "action": {
+                "required": true,
+                "type": "string",
+                "description": "Do not change the value",
+                "default": "testapi"
+            },
+            "name": {
+                "type": "string",
+                "required": true,
+                "description": "Name of the person is contacting."
+            },
+            "phone": {
+                "type": "string",
+                "required": true,
+                "description": "Phone of the person is contacting."
+            },
+            "email": {
+                "type": "string",
+                "required": true,
+                "description": "Email of the person is contacting."
+            },
+            "message": {
+                "type": "string",
+                "required": true,
+                "description": "Message to send."
+            }
+        }
+    }]
+}
+```
+* Parameter details:
+    * **host** {String} : AWS REST BASE URL `execute-api.us-west-2.amazonaws.com`
+    * **resources** {Array of Resources} : API endpoints layout definition
+        * **path** : Public api endpoint path when it is deployed.
+        * **requestTemplate** : Parameters to use in lambda function.
+        * **_operation** : Link to the endpoint source name.
+        * **`action,name,phone,email and messsage ...`**: Custom parameters according your implementation.
+* Run `grunt build-api --deploy-all`. 
+    If everithing is OK you will be able to see your API on aws:
+![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview4.png)
+* **You can also see [all Grunt task here](#gtask)**
 #### Grunt Tasks
-
+[id]: gtask
 - `grunt` the default task that builds everything
+- `grunt build-api` generates all dependencies to deploy in a Serverless[^serverless] Approach using **AWS Lambda - API Gateway** [^awslambda]
+    - `--deploy` will deploy the endpoints to the REST GATEWAY only. 
+    - `--deploy-all` will deploy the endpoints, lambda function and will setup the execution rights.  
+- `grunt remove-api` deletes the deployed resources in AWS.
+    - `--api` will delete the REST GATEWAY only.
+    - `--all` will delete all on AWS regarding the API deploy.
+
+## Advanced Usage
+##### **TESTING**
+After download and install, simply edit or cretae a json file `/v1/{your_endpoint}/_test.json` to perform your test.
+```
+/*  You can use comments in this JSON file */
+{
+    "delay_ms": 1000,
+    "tests": [{
+        // Add custom flags to use in lib/server-utils.js: performTest(t)
+        // "enabled": false,
+        "event": {
+            "mode": "keepalive",
+            "action": "testapi",
+            "name": "Albert Roberts",
+            "phone": "5591112233",
+            "email": "test@qq.com",
+            "message": "Testing SMS and email"
+        }
+    }, {
+        "enabled": true,
+        "event": {
+            "mode": "keepalive",
+            "action": "testapi",
+            "name": "Mario Stone",
+            "phone": "3334445555",
+            "email": "test@test2.com",
+            "message": "Testing SMS and email"
+        }
+    }]
+}
+```
+Running Example:
+![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)
+
+##### **OVERWRITE Production Settings**:
+[id]: overwritesettings "Overwriting Settings"
+The `config.js` file can be modified:
+```
+...
+if (ENV.environment === 'production') {
+        // Overwrite settings
+        ENV.TWILIO.NUMBER = process.env.TWILIO_NUMBER || ENV.TWILIO.NUMBER;
+        ENV.TWILIO.ACC_SID = process.env.TWILIO_ACC_SID || ENV.TWILIO.ACC_SID;
+        ENV.TWILIO.TOKEN = process.env.TWILIO_TOKEN || ENV.TWILIO.TOKEN;
+
+        ENV.GMAIL.USER = process.env.GMAIL_USER || ENV.GMAIL.USER;
+        ENV.GMAIL.PASS = process.env.GMAIL_PASS || ENV.GMAIL.PASS;
+        ENV.GMAIL.CC = process.env.GMAIL_CC || ENV.GMAIL.CC;
+    }
+...
+```
+Remember to set **DEV_ENV=Production** and the custom Environment Variables as [AWS Elasticbeanstalk Deploy](#deploy_eb)  indicates.
+_Important Note:_ 
+** This functionality only applies for **Elasticbeanstalk**.
+
 
 ## Bugs and Issues
 
@@ -93,3 +242,10 @@ API was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.
 ## Copyright and License
 
 Copyright 2013-2018. Code released under the [MIT](https://github.com/pcesarmx/portfolio-api/master/LICENSE) license.
+
+[^twilio]: [Twilio © - Programmable SMS Service](https://www.twilio.com/sms)
+[^gmail]: [Google Mail © - E-mail Service](https://mail.google.com/)
+[^aws]: [Amazon Web Services ©](https://aws.amazon.com/) 
+[^ebcli]: [The Elastic Beanstalk Command Line Interface (EB CLI)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) 
+[^awslambda]: [AWS Lambda](https://aws.amazon.com/lambda/) 
+[^serverless]: [Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing#Serverless_runtimes) 
