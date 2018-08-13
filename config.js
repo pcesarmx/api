@@ -30,7 +30,7 @@ module.exports = function (main) {
 		ENV.APIGATEWAY.version = ENV.version;
 	}
 	ENV.APIGATEWAY.version = ENV.APIGATEWAY.version.replace(/[^a-zA-Z0-9 ]/g, "")
-	ENV.APIGATEWAY.lambda_handler_name = ENV.APIGATEWAY.lambda_handler_name || "handler";
+	ENV.handler = ENV.APIGATEWAY.lambda_handler_name = ENV.APIGATEWAY.lambda_handler_name || "handler";
 	ENV.APIGATEWAY.lambda_timeout_sec = ENV.APIGATEWAY.lambda_timeout_sec || "3";
 
 	if (ENV.environment === 'test' || ENV.environment === 'devel') {

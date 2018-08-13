@@ -11,7 +11,7 @@
         "https"
     ],
     "paths": {
-        "/pinglocation": {
+        "/contactme": {
             "get": {
                 "deprecated": false,
                 "summary": "",
@@ -22,177 +22,28 @@
                         "in": "query",
                         "required": true,
                         "type": "string",
-                        "default": "pinglocation"
+                        "default": "contactme"
                     },
                     {
-                        "name": "session",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "description": "use login token"
-                    },
-                    {
-                        "name": "usrid",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "description": "use IBO#(memebers) or -1(guestuser)"
-                    },
-                    {
-                        "name": "role",
-                        "in": "query",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "LEADER",
-                                "GUEST"
-                            ],
-                            "default": "LEADER"
-                        }
-                    },
-                    {
-                        "name": "deviceid",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "default": "_CORDOVA_DEVICE_ID"
-                    },
-                    {
-                        "name": "lat",
-                        "in": "query",
-                        "required": true,
-                        "type": "number",
-                        "description": "GPS latitude"
-                    },
-                    {
-                        "name": "long",
-                        "in": "query",
-                        "required": true,
-                        "type": "number",
-                        "description": "GPS longitude"
-                    },
-                    {
-                        "name": "lang",
-                        "in": "query",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "en",
-                                "es"
-                            ],
-                            "default": "es"
-                        }
-                    },
-                    {
-                        "name": "guestuser",
-                        "in": "query",
-                        "required": true,
-                        "type": "boolean",
-                        "default": false
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "request processed successfully"
-                    }
-                }
-            }
-        },
-        "/setrate": {
-            "get": {
-                "deprecated": true,
-                "summary": "Write on workspace directly from app",
-                "description": "Write on workspace directly from app",
-                "parameters": [
-                    {
-                        "name": "usrid",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "description": "use IBO#(memebers) or -1(guestuser)"
-                    },
-                    {
-                        "name": "role",
-                        "in": "query",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "LEADER",
-                                "GUEST"
-                            ],
-                            "default": "LEADER"
-                        }
-                    },
-                    {
-                        "name": "deviceid",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "default": "_CORDOVA_DEVICE_ID"
-                    },
-                    {
-                        "name": "action",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "default": "setrate"
-                    },
-                    {
-                        "name": "session",
-                        "in": "query",
-                        "required": true,
-                        "type": "string",
-                        "description": "use login token"
-                    },
-                    {
-                        "name": "long",
-                        "in": "query",
-                        "required": true,
-                        "type": "number",
-                        "description": "GPS longitude"
-                    },
-                    {
-                        "name": "lat",
-                        "in": "query",
-                        "required": true,
-                        "type": "number",
-                        "description": "GPS latitude"
-                    },
-                    {
-                        "name": "lang",
-                        "in": "query",
-                        "required": true,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [
-                                "en",
-                                "es"
-                            ],
-                            "default": "es"
-                        }
-                    },
-                    {
-                        "name": "guestuser",
-                        "in": "query",
-                        "required": true,
-                        "type": "boolean",
-                        "default": false
-                    },
-                    {
-                        "name": "mediaid",
+                        "name": "name",
                         "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "rate",
+                        "name": "phone",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "message",
                         "in": "query",
                         "required": true,
                         "type": "string"

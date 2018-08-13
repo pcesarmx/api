@@ -2,129 +2,38 @@
 	"host": "execute-api.us-west-2.amazonaws.com",
 	"resources": [{
 		"path": "/",
-		"lambda": "mediadist-core",
 		"requestTemplate": {}
 	}, {
-		"path": "/pinglocation",
-		"lambda": "mediadist-core",
+		"path": "/contactme",
 		"requestTemplate": {
-			"fb": false,
-			"nocache": true,
-			"operation": "assets/assets",
+			"_operation": "portfolio/portfolio",
 			"action": {
 				"required": true,
 				"type": "string",
-				"description": "Do not change the value"
+				"description": "Do not change the value",
+				"default": "testapi"
 			},
-			"session": {
-				"required": true,
-				"type": "string",
-				"description": "use login token"
-			},
-			"usrid": {
+			"name": {
 				"type": "string",
 				"required": true,
-				"description": "use IBO#(memebers) or -1(guestuser)"
+				"description": "Name of the person is contacting."
 			},
-			"role": {
-				"type": "array",
-				"items": {
-					"type": "string",
-					"enum": ["LEADER", "GUEST"],
-					"default": "LEADER"
-				},
-				"required": true
-			},
-			"deviceid": {
-				"required": true,
+			"phone": {
 				"type": "string",
-				"default": "_CORDOVA_DEVICE_ID"
-			},
-			"lat": {
 				"required": true,
-				"type": "number",
-				"description": "GPS latitude"
+				"description": "Phone of the person is contacting."
 			},
-			"long": {
+			"email": {
+				"type": "string",
 				"required": true,
-				"type": "number",
-				"description": "GPS longitude"
+				"description": "Email of the person is contacting."
 			},
-			"lang": {
-				"type": "array",
-				"items": {
-					"type": "string",
-					"enum": ["en", "es"],
-					"default": "es"
-				}
-			},
-			"guestuser": {
-				"type": "boolean",
+			"message": {
+				"type": "string",
 				"required": true,
-				"default": false
+				"description": "Message to send."
 			},
 			"isProd": "$input.params('isProd')"
-		}
-	}, {
-		"path": "/setrate",
-		"lambda": "mediadist-core",
-		"deprecated": true,
-		"summary": "Write on workspace directly from app",
-		"description": "Write on workspace directly from app",
-		"requestTemplate": {
-			"fb": "true",
-			"operation": "assets/assets",
-			"usrid": {
-				"type": "string",
-				"required": true,
-				"description": "use IBO#(memebers) or -1(guestuser)"
-			},
-			"role": {
-				"type": "array",
-				"items": {
-					"type": "string",
-					"enum": ["LEADER", "GUEST"],
-					"default": "LEADER"
-				},
-				"required": true
-			},
-			"deviceid": {
-				"required": true,
-				"type": "string",
-				"default": "_CORDOVA_DEVICE_ID"
-			},
-			"action": "$input.params('action')",
-			"session": {
-				"required": true,
-				"type": "string",
-				"description": "use login token"
-			},
-			"long": {
-				"required": true,
-				"type": "number",
-				"description": "GPS longitude"
-			},
-			"lat": {
-				"required": true,
-				"type": "number",
-				"description": "GPS latitude"
-			},
-			"lang": {
-				"type": "array",
-				"items": {
-					"type": "string",
-					"enum": ["en", "es"],
-					"default": "es"
-				}
-			},
-			"guestuser": {
-				"type": "boolean",
-				"required": true,
-				"default": false
-			},
-			"isProd": "$input.params('isProd')",
-			"mediaid": "$input.params('mediaid')",
-			"rate": "$input.params('rate')"
 		}
 	}]
 }

@@ -14,7 +14,10 @@
 	},
 	"keywords": [
 		"portfolio api",
-		""
+		"aws",
+		"gateway",
+		"lambda",
+		"serverless"
 	],
 	"homepage": "https://github.com/pcesarmx/portfolio-api/blob/master/README.md",
 	"dependencies": {
