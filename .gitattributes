@@ -1,0 +1,5 @@
+assets/* linguist-vendored
+lib/* linguist-vendored=false
+v1/* linguist-vendored=false
+clasess/* linguist-vendored=false
+Gruntfile.js linguist-vendored=false

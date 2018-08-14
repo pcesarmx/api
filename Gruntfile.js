@@ -26,13 +26,13 @@ module.exports = (grunt) => {
 			},
 			html: {
 				files: [
-					'public/index.html'
+					'dist/index.html'
 				]
 			},
 			public: {
 				files: [
-					// 'public/**',
-					// 'public/admin/**',
+					// 'dist/**',
+					// 'dist/admin/**',
 				],
 			},
 			nodemonrestart: {

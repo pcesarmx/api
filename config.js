@@ -17,7 +17,7 @@ module.exports = function (main) {
 		// stage: "v1.0",
 		version: "v1.0", // API Version
 		environment: ((process.env.DEV_ENV) ? process.env.DEV_ENV : "devel"), //AWS
-		staticpath: 'public/adminsite/'
+		staticpath: 'dist/adminsite/'
 	};
 	// DEVELOPMENT SETTINGS
 	ENV.TWILIO = SETTINGS.TWILIO || {};
@@ -39,7 +39,7 @@ module.exports = function (main) {
 			console.log('\033[31m********************************************************************')
 			console.log('********************* YOU ARE USING ' + ENV.environment.toUpperCase() + ' ENV *********************')
 			console.log('********************************************************************', '\x1b[0m')
-			ENV.staticpath = 'public/__test__/';
+			ENV.staticpath = 'dist/__test__/';
 		}
 	}
 

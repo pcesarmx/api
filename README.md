@@ -146,7 +146,7 @@ _See more info about EB CLI_ [here](https://docs.aws.amazon.com/elasticbeanstalk
 }
 ```
 * Parameter details:
-    * **host** {String} : AWS REST BASE URL `execute-api.us-west-2.amazonaws.com`
+    * **host**: AWS REST BASE URL `execute-api.us-west-2.amazonaws.com`
     * **resources** {Array of Resources} : API endpoints layout definition
         * **path** : Public api endpoint path when it is deployed.
         * **requestTemplate** : Parameters to use in lambda function.
@@ -246,9 +246,9 @@ API was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.
 Copyright 2013-2018. Code released under the [MIT](https://github.com/pcesarmx/portfolio-api/master/LICENSE) license.
 
 ## References
-[Twilio © - Programmable SMS Service](https://www.twilio.com/sms)
-[Google Mail © - E-mail Service](https://mail.google.com/)
-[Amazon Web Services ©](https://aws.amazon.com/) 
-[The Elastic Beanstalk Command Line Interface (EB CLI)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) 
-[AWS Lambda](https://aws.amazon.com/lambda/) 
-[Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing#Serverless_runtimes) 
+* [Twilio © - Programmable SMS Service](https://www.twilio.com/sms)
+* [Google Mail © - E-mail Service](https://mail.google.com/)
+* [Amazon Web Services ©](https://aws.amazon.com/) 
+* [The Elastic Beanstalk Command Line Interface (EB CLI)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) 
+* [AWS Lambda](https://aws.amazon.com/lambda/) 
+* [Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing#Serverless_runtimes) 
