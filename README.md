@@ -26,7 +26,7 @@ To begin using this module, choose one of the following options to get started:
 After download and install: 
 * Edit or cretae a js file `/v1/{your_endpoint}/{your_endpoint}.js`.
 * Edit or cretae a js file `/classes/{your_class}.js`.
-* Create the file [**`private_config.json`**](#private-config) with your own twilio[^twilio], gmail[^gmail] and AWS[^aws] settings.
+* Create the file [**`private_config.json`**](#configuration-settings) with your own twilio, gmail and AWS settings.
     **You can use**  `_private_config.json` **as a base example**.
 * Run the project
  `grunt`
@@ -51,7 +51,7 @@ Calling `http://localhost:5800/{your_endpoint}` using `GET` or `POST` (Same para
 * The file `private_config.json` will contain all the API Keys, credentials, production params that supports the implementation. 
 * **This file will be ignored on the repository**.
 
-[id]: private-config "Configuration Settings"
+[id]: configuration-settings "Configuration Settings"
 ```
 {
     "TWILIO": {
@@ -85,12 +85,12 @@ Calling `http://localhost:5800/{your_endpoint}` using `GET` or `POST` (Same para
     }
 }
 ```
-__Note:__ You can also protect your deploy by overwriting your production settings on production enviroment. See [Advanced Usage](#overwritesettings)
+__Note:__ You can also protect your deploy by overwriting your production settings on production enviroment. See [Advanced Usage](#overwrite-production-settings)
 
 
 ### Deploy to production using **AWS**
 ##### **Elasticbeanstalk Deploy:**
-[id]: deploy_eb "Configuration Settings" 
+[id]: elasticbeanstalk-deploy "Configuration Settings" 
 * Install **The Elastic Beanstalk Command Line Interface (EB CLI)[^ebcli]**
 * `eb init`
 * `eb create [ENV_NAME]`
@@ -103,7 +103,7 @@ __Note:__ You can also protect your deploy by overwriting your production settin
 _See more info about EB CLI_ [here](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-cmd-commands.html)
 
 ##### **Lambda - GATEWAY Deploy:**
-* Be sure all your references on [the Configuration file](#private-config) are matching your aws settings **(APIGATEWAY settings)**.
+* Be sure all your references on [the Configuration file](#configuration-settings) are matching your aws settings **(APIGATEWAY settings)**.
 * Edit `apigateway.swagger.config.json`
 ```
 {
@@ -153,18 +153,11 @@ _See more info about EB CLI_ [here](https://docs.aws.amazon.com/elasticbeanstalk
         * **_operation** : Link to the endpoint source name.
         * **`action,name,phone,email and messsage ...`**: Custom parameters according your implementation.
 * Run `grunt build-api --deploy-all`. 
+
     If everithing is OK you will be able to see your API on aws:
+
 ![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview4.png)
-* **You can also see [all Grunt task here](#gtask)**
-#### Grunt Tasks
-[id]: gtask
-- `grunt` the default task that builds everything
-- `grunt build-api` generates all dependencies to deploy in a Serverless[^serverless] Approach using **AWS Lambda - API Gateway** [^awslambda]
-    - `--deploy` will deploy the endpoints to the REST GATEWAY only. 
-    - `--deploy-all` will deploy the endpoints, lambda function and will setup the execution rights.  
-- `grunt remove-api` deletes the deployed resources in AWS.
-    - `--api` will delete the REST GATEWAY only.
-    - `--all` will delete all on AWS regarding the API deploy.
+* **You can also see [all Grunt task here](#grunt-tasks)**
 
 ## Advanced Usage
 ##### **TESTING**
@@ -201,7 +194,7 @@ Running Example:
 ![Portfolio Preview1](https://raw.githubusercontent.com/pcesarmx/portfolio-api/master/assets/preview2.png)
 
 ##### **OVERWRITE Production Settings**:
-[id]: overwritesettings "Overwriting Settings"
+[id]: overwrite-production-settings "Overwriting Settings"
 The `config.js` file can be modified:
 ```
 ...
@@ -217,10 +210,19 @@ if (ENV.environment === 'production') {
     }
 ...
 ```
-Remember to set **DEV_ENV=Production** and the custom Environment Variables as [AWS Elasticbeanstalk Deploy](#deploy_eb)  indicates.
-_Important Note:_ 
-** This functionality only applies for **Elasticbeanstalk**.
+Remember to set **DEV_ENV=Production** and the custom Environment Variables as [AWS Elasticbeanstalk Deploy](#elasticbeanstalk-deploy)  indicates.
 
+_Important Note:_ **This functionality only applies for **Elasticbeanstalk**.
+
+## Grunt Tasks
+[id]: grunt-tasks
+- `grunt` the default task that builds everything
+- `grunt build-api` generates all dependencies to deploy in a Serverless[^serverless] Approach using **AWS Lambda - API Gateway** [^awslambda]
+    - `--deploy` will deploy the endpoints to the REST GATEWAY only. 
+    - `--deploy-all` will deploy the endpoints, lambda function and will setup the execution rights.  
+- `grunt remove-api` deletes the deployed resources in AWS.
+    - `--api` will delete the REST GATEWAY only.
+    - `--all` will delete all on AWS regarding the API deploy.
 
 ## Bugs and Issues
 
@@ -243,9 +245,10 @@ API was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.
 
 Copyright 2013-2018. Code released under the [MIT](https://github.com/pcesarmx/portfolio-api/master/LICENSE) license.
 
-[^twilio]: [Twilio © - Programmable SMS Service](https://www.twilio.com/sms)
-[^gmail]: [Google Mail © - E-mail Service](https://mail.google.com/)
-[^aws]: [Amazon Web Services ©](https://aws.amazon.com/) 
-[^ebcli]: [The Elastic Beanstalk Command Line Interface (EB CLI)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) 
-[^awslambda]: [AWS Lambda](https://aws.amazon.com/lambda/) 
-[^serverless]: [Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing#Serverless_runtimes) 
+## References
+[Twilio © - Programmable SMS Service](https://www.twilio.com/sms)
+[Google Mail © - E-mail Service](https://mail.google.com/)
+[Amazon Web Services ©](https://aws.amazon.com/) 
+[The Elastic Beanstalk Command Line Interface (EB CLI)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) 
+[AWS Lambda](https://aws.amazon.com/lambda/) 
+[Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing#Serverless_runtimes) 
