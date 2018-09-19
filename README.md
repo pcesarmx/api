@@ -224,7 +224,7 @@ _Important Note:_ **This functionality only applies for **Elasticbeanstalk**.
     - `--api` will delete the REST GATEWAY only.
     - `--all` will delete all on AWS regarding the API deploy.
 
-# Custom Libraries 
+# Custom Classes 
 ## Twilio
 - `sendsms (params)`
 
@@ -255,7 +255,7 @@ _Important Note:_ **This functionality only applies for **Elasticbeanstalk**.
 
 ## Firebase
 
-Setup your own firebase settings on [**`private_config.json`**](#configuration-settings) and [Firebase Doc](https://firebase.google.com/docs/admin/setup)
+Setup your own firebase settings on [**`private_config.json`**](#configuration-settings)
 
 ### Functions: 
 - `isExistingApp (name)` -- `returns` boolean
@@ -297,3 +297,4 @@ Copyright 2013-2018. Code released under the [MIT](https://github.com/pcesarmx/p
 * [The Elastic Beanstalk Command Line Interface (EB CLI)](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) 
 * [AWS Lambda](https://aws.amazon.com/lambda/) 
 * [Serverless computing](https://en.wikipedia.org/wiki/Serverless_computing#Serverless_runtimes) 
+* [Firebase Doc](https://firebase.google.com)
