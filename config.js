@@ -20,9 +20,10 @@ module.exports = function (main) {
 		staticpath: 'dist/adminsite/'
 	};
 	// DEVELOPMENT SETTINGS
-	ENV.TWILIO = SETTINGS.TWILIO || {};
-	ENV.GMAIL = SETTINGS.GMAIL || {};
-	ENV.APIGATEWAY = SETTINGS.APIGATEWAY || {};
+	ENV = Object.assign(SETTINGS, ENV);
+	// ENV.TWILIO = SETTINGS.TWILIO || {};
+	// ENV.GMAIL = SETTINGS.GMAIL || {};
+	// ENV.APIGATEWAY = SETTINGS.APIGATEWAY || {};
 	if (!ENV.APIGATEWAY.base_path || ENV.APIGATEWAY.base_path === "default") {
 		ENV.APIGATEWAY.base_path = ENV.api_path.replace(/[\/.]/g, "").toUpperCase();
 	}

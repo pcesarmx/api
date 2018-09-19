@@ -29,3 +29,4 @@ private_config.json
 !.elasticbeanstalk/*.global.yml
 AWS/apigateway/swagger.json
 config_aws.sh
+ptest-web-firebase-adminsdk.json

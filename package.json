@@ -27,6 +27,8 @@
 		"deferred": "^0.7.4",
 		"express": "^4.13.3",
 		"extend": "^3.0.0",
+		"firebase": "^5.4.2",
+		"firebase-admin": "^6.0.0",
 		"glob": "^6.0.2",
 		"moment": "^2.13.0",
 		"moment-timezone": "^0.5.11",

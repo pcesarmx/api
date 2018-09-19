@@ -224,6 +224,50 @@ _Important Note:_ **This functionality only applies for **Elasticbeanstalk**.
     - `--api` will delete the REST GATEWAY only.
     - `--all` will delete all on AWS regarding the API deploy.
 
+# Custom Libraries 
+## Twilio
+- `sendsms (params)`
+
+###### params: Object
+   
+```
+{
+    mobile: string 
+}
+```
+
+## G-Mail
+
+- `send (params)`
+
+###### params: Object
+   
+```
+{
+    from: string | config.USER,
+    to: string,
+    cc: string | config.cc,
+    subject: string,
+    body: string | 'hello world!'
+}
+```
+
+
+## Firebase
+
+Setup your own firebase settings on [**`private_config.json`**](#configuration-settings) and [Firebase Doc](https://firebase.google.com/docs/admin/setup)
+
+### Functions: 
+- `isExistingApp (name)` -- `returns` boolean
+- `generateToken(name, uid, data)` -- returns `promise`
+- `listen (path, on_event, callback)` -- returns `promise`
+- `read (path)` -- returns `promise`
+- `update (path, snapshot)` -- returns `promise`
+- `write (path, snapshot)` -- returns `promise`
+- `push (path, snapshot)` -- returns `promise`
+- `remove (path)` -- returns `promise`
+- `findBy (path, key, value, bypass)` -- returns `promise`
+
 ## Bugs and Issues
 
 Have a bug or an issue with this template? [Open a new issue](https://github.com/pcesarmx/portfolio-api/issues) here on GitHub.
@@ -243,7 +287,8 @@ API was created by and is maintained by **[Paulo C Ruvalcaba](http://pruvalcaba.
 
 ## Copyright and License
 
-Copyright 2013-2018. Code released under the [MIT](https://github.com/pcesarmx/portfolio-api/master/LICENSE) license.
+Copyright 2013-2018. Code released under the [MIT](https://github.com/pcesarmx/portfolio-api/blob/master/LICENSE) license.
+
 
 ## References
 * [Twilio © - Programmable SMS Service](https://www.twilio.com/sms)
